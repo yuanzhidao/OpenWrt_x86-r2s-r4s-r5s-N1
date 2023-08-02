@@ -5,7 +5,8 @@ SHELL_FOLDER=$(dirname $(readlink -f "$0"))
 
 git clone https://github.com/robimarko/nss-packages package/nss-packages
 svn co https://github.com/coolsnowwolf/lede/trunk/package/qca package/nss-packages/qca
-rm -rf package/nss-packages/qca/qca-ssdk package/nss-packages/qca/qca-nss-dp package/nss-packages/qca/nss/qca-nss-dp package/nss-packages/qca/nss/qca-*-64
+mv -f package/qca/nss/* package/qca/
+rm -rf package/nss-packages/qca/qca-ssdk package/nss-packages/qca/qca-nss-dp package/nss-packages/qca/qca-*-64 package/nss-packages/qca/nss
 
 sed -i 's/DEFAULT_PACKAGES +=/DEFAULT_PACKAGES += kmod-qca-nss-dp kmod-qca-nss-drv kmod-qca-nss-drv-pppoe kmod-qca-nss-ecm kmod-qca-nss-drv-bridge-mgr kmod-qca-nss-drv-vlan-mgr nss-firmware-ipq8074/' target/linux/ipq807x/Makefile
 
